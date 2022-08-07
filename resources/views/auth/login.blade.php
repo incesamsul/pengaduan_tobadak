@@ -5,7 +5,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CV TRITAMA INTI PERSADA !</title>
+    <title>pengajuan tobadak !</title>
     <link rel="stylesheet" href="{{ asset('css/login.css') }}" />
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
   </head>
