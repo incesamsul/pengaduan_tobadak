@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kategori;
 use App\Models\Pengaduan;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,8 @@ class Masyarakat extends Controller
 {
     public function pengaduan()
     {
-        $data['pengaduan'] = Pengaduan::all();
+        $data['pengaduan'] = Pengaduan::where('id_masyarakat', auth()->user()->id)->get();
+        $data['kategori'] = Kategori::all();
         return view('pages.pengaduan.index', $data);
     }
 
@@ -20,6 +22,7 @@ class Masyarakat extends Controller
 
         Pengaduan::create([
             'id_masyarakat' => auth()->user()->id,
+            'id_kategori' => $request->kategori_pengaduan,
             'isi_pengaduan' => $request->isi_pengaduan,
             'foto' => $fileName
         ]);

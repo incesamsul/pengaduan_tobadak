@@ -29,6 +29,7 @@ Route::post('/postlogin', [LoginController::class, 'postLogin']);
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/', [Home::class, 'beranda']);
 
+Route::post('/register', [LoginController::class, 'register']);
 
 Route::get('/tentang_aplikasi', [Home::class, 'tentangAplikasi']);
 
@@ -78,11 +79,17 @@ Route::group(['middleware' => ['auth', 'ceklevel:Administrator']], function () {
     Route::group(['prefix' => 'admin'], function () {
         // GET REQUEST
         Route::get('/pengguna', [Admin::class, 'pengguna']);
+        Route::get('/kategori', [Admin::class, 'kategori']);
         Route::get('/fetch_data', [Admin::class, 'fetchData']);
 
         // CRUD PENGGUNA
         Route::post('/create_pengguna', [Admin::class, 'createPengguna']);
         Route::post('/update_pengguna', [Admin::class, 'updatePengguna']);
         Route::post('/delete_pengguna', [Admin::class, 'deletePengguna']);
+
+        // CRUD KATEGORI
+        Route::post('/create_kategori', [Admin::class, 'createKategori']);
+        Route::post('/update_kategori', [Admin::class, 'updateKategori']);
+        Route::post('/delete_kategori', [Admin::class, 'deleteKategori']);
     });
 });

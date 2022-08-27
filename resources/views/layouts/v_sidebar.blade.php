@@ -31,6 +31,9 @@
                 </ul>
             </li>
 
+            <li class="" id="liKategori"><a class="nav-link" href="{{ URL::to('/admin/kategori') }}"><i
+                class="fas fa-list"></i> <span>Kategori</span></a></li>
+
             {{-- END OF MENU ADMIN --}}
             @endif
 

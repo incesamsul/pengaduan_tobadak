@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Kategori;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,6 +27,12 @@ class Admin extends Controller
     {
         $data['pengguna'] = $this->userModel->getAllUser();
         return view('pages.pengguna.index', $data);
+    }
+
+    public function kategori()
+    {
+        $data['kategori'] = Kategori::all();
+        return view('pages.kategori.index', $data);
     }
 
 
@@ -99,6 +105,31 @@ class Admin extends Controller
     public function deletePengguna(Request $request)
     {
         User::destroy($request->post('user_id'));
+        return 1;
+    }
+
+    // CRUD KATEGORI
+
+    public function createKategori(Request $request)
+    {
+        Kategori::create([
+            'nama_kategori' => $request->nama_kategori,
+        ]);
+        return redirect()->back()->with('message', 'kategori berhasil di tambahkan');
+    }
+
+    public function updateKategori(Request $request)
+    {
+
+        Kategori::where('id_kategori', $request->id)->update([
+            'nama_kategori' => $request->nama_kategori,
+        ]);
+        return redirect()->back()->with('message', 'kategori berhasil di update');
+    }
+
+    public function deleteKategori(Request $request)
+    {
+        Kategori::where('id_kategori', $request->hapus)->delete();
         return 1;
     }
 }

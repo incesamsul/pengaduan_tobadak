@@ -22,6 +22,7 @@
                                 @endif
                                 <td>Isi pengaduan</td>
                                 <td>foto pengaduan</td>
+                                <td>Kategori pengaduan</td>
                                 <td>Status pengaduan</td>
                                 <td></td>
                             </tr>
@@ -34,6 +35,7 @@
                                     <td>{{ $row->masyarakat->name }}</td>
                                     @endif
                                     <td>{{ $row->isi_pengaduan }}</td>
+                                    <td>{{ $row->kategori->nama_kategori }}</td>
                                     <td><img src="{{ asset('data/foto_pengaduan/'.$row->foto) }}" alt="" class="img-thumbnail" width="100"></td>
                                     <td>
                                         @if ($row->status_pengaduan == 'antri')
@@ -74,7 +76,7 @@
         </div>
     </div>
 </section>
-  
+
   <!-- Modal -->
   <div class="modal fade" id="modalPengaduan" tabindex="-1" aria-labelledby="modalPengaduanLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -94,6 +96,15 @@
                 <textarea name="isi_pengaduan" id="isi_pengaduan" cols="30" rows="10" class="form-control" required></textarea>
             </div>
             <div class="form-group">
+                <label for="kategori_pengaduan">Kategori pengaduan</label>
+                <select name="kategori_pengaduan" id="kategori_pengaduan" class="form-control">
+                    <option value="">-- pilih kategori --</option>
+                    @foreach ($kategori as $row)
+                        <option value="{{ $row->id_kategori }}">{{ $row->nama_kategori }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="foto_pengaduan">Foto pengaduan</label>
                 <input type="file" name="foto_pengaduan" id="foto_pengaduan" class="form-control" required>
             </div>
@@ -107,7 +118,7 @@
     </div>
   </div>
 
-  
+
   <!-- Modal -->
   <div class="modal fade" id="modalUpdateStatus" tabindex="-1" aria-labelledby="modalUpdateStatusLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -150,7 +161,7 @@
         $('.btn-tambah').on('click',function(){
             $('#formPengaduan').attr('action','/masyarakat/create_pengaduan');
         });
-        
+
         $('.table-user tbody').on('click', 'tr td a.edit', function() {
             let dataEdit = $(this).data('edit');
             console.log(dataEdit);
@@ -201,7 +212,7 @@
             })
         });
 
-       
+
     });
 
     $('#liPengguna').addClass('active');

@@ -9,6 +9,6 @@ class Home extends Controller
 {
     public function beranda()
     {
-        return 'what';
+        return view('halaman_depan.beranda');
     }
 }

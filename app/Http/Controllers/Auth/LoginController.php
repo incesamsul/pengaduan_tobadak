@@ -38,6 +38,21 @@ class LoginController extends Controller
         // return redirect('/login-biasa')->with('fail', 'Username atau password anda salah');
     }
 
+    public function register(Request $request)
+    {
+        User::create([
+            'name' => $request->nama,
+            'email' => $request->email,
+            'nik' => $request->nik,
+            'dusun' => $request->dusun,
+            'telp' => $request->telp,
+            'password' => bcrypt($request->email),
+            'role' => 'masyarakat',
+        ]);
+
+        return redirect()->back()->with('message', 'berhasil terdaftar');
+    }
+
 
     public function logout()
     {
