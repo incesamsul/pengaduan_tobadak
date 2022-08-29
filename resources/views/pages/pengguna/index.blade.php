@@ -91,7 +91,7 @@
                             <option value="masyarakat">Masyarakat</option>
                             <option value="sekdes">Sekdes</option>
                             <option value="kepala_desa">Kepala Desa</option>
-                            <option value="Administrator">Administrator</option>
+                            {{-- <option value="Administrator">Administrator</option> --}}
                         </select>
                     </div>
             </div>
