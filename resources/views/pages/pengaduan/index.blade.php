@@ -9,7 +9,9 @@
                     <h4>Data Pengaduan</h4>
                     <div class="table-tools d-flex justify-content-around ">
                         <input type="text" class="form-control card-form-header mr-3" placeholder="Cari Data ..." id="searchbox">
+                        @if (auth()->user()->role == 'masyarakat')
                         <button type="button" class="btn-tambah btn bg-main text-white float-right" data-toggle="modal" data-target="#modalPengaduan"><i class="fas fa-plus"></i></button>
+                        @endif
                     </div>
                 </div>
                 <div class="card-body p-0">
