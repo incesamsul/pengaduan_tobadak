@@ -39,7 +39,7 @@ Route::group(['middleware' => ['guest']], function () {
 });
 
 // GENERAL CONTROLLER ROUTE
-Route::group(['middleware' => ['auth', 'ceklevel:Administrator,masyarakat,sekdes']], function () {
+Route::group(['middleware' => ['auth', 'ceklevel:Administrator,masyarakat,sekdes,kepala_desa']], function () {
 
     Route::get('/dashboard', [General::class, 'dashboard']);
     Route::get('/profile', [General::class, 'profile']);
@@ -75,7 +75,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:sekdes']], function () {
 
 
 // ADMIN ROUTE
-Route::group(['middleware' => ['auth', 'ceklevel:Administrator']], function () {
+Route::group(['middleware' => ['auth', 'ceklevel:Administrator,kepala_desa']], function () {
     Route::group(['prefix' => 'admin'], function () {
         // GET REQUEST
         Route::get('/pengguna', [Admin::class, 'pengguna']);

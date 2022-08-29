@@ -20,7 +20,7 @@
 
 
 
-            @if (auth()->user()->role == 'Administrator')
+            @if (auth()->user()->role == 'Administrator' || auth()->user()->role == 'kepala_desa')
             {{-- MENU ADMIN --}}
             <li class="menu-header">Admin</li>
             <li class="nav-item dropdown " id="liPengguna">
