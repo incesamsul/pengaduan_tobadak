@@ -27,6 +27,8 @@
                                 <td>foto pengaduan</td>
                                 <td>Kategori pengaduan</td>
                                 <td>Status pengaduan</td>
+                                <td>selesai</td>
+                                <td>Tanggapan kepala desa</td>
                                 <td></td>
                             </tr>
                         </thead>
@@ -54,13 +56,23 @@
                                             <span class="badge badge-success">Selesai</span>
                                         @endif
                                     </td>
+                                    <td>
+                                        @if ($row->selesai == '0')
+                                            <span class="badge badge-danger">Belum selesai</span>
+                                        @else
+                                            <span class="badge badge-success">sudah selesai</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        {{ $row->tanggapan == '' ? 'belum ada tanggapan' : $row->tanggapan }}
+                                    </td>
                                     <td class="option">
                                         <div class="btn-group dropleft btn-option">
                                             <i type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="fas fa-ellipsis-v"></i>
                                             </i>
                                             <div class="dropdown-menu">
-                                                @if (auth()->user()->role == 'sekdes')
+                                                @if (auth()->user()->role == 'sekdes' || auth()->user()->role == 'kepala_desa')
                                                     <a data-edit='@json($row)' data-toggle="modal" data-target="#modalUpdateStatus" class="dropdown-item edit-status" href="#"><i class="fas fa-pen"> Update status</i></a>
                                                 @endif
                                                 @if ($row->status_pengaduan == 'antri')
@@ -142,13 +154,23 @@
                   <label for="status_pengaduan">Status pengaduan</label>
                   <input type="hidden" id="id_update" name="id_update">
                   <select name="status_pengaduan" id="status_pengaduan" class="form-control">
+                      @if (auth()->user()->role == 'sekdes')
                       <option>antri</option>
                       <option>proses</option>
+                      <option>selesai</option>
+                      @endif
+                      @if (auth()->user()->role == 'kepala_desa')
                       <option>diterima</option>
                       <option>ditolak</option>
-                      <option>selesai</option>
+                      @endif
                   </select>
               </div>
+              @if (auth()->user()->role == 'kepala_desa')
+              <div class="form-group">
+                <label for="tanggapan">tanggapan</label>
+                <textarea class="form-control my-textarea" name="tanggapan" id="tanggapan"></textarea>
+            </div>
+              @endif
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

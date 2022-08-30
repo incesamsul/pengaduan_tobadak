@@ -17,8 +17,16 @@ class Sekdes extends Controller
 
     public function updateStatusPengaduan(Request $request)
     {
+
+        if ($request->status_pengaduan == 'selesai') {
+            Pengaduan::where('id_pengaduan', $request->id_update)->update([
+                'selesai' => '1'
+            ]);
+            return redirect()->back()->with('message', 'pengaduan berhasil di update');
+        }
         Pengaduan::where('id_pengaduan', $request->id_update)->update([
             'status_pengaduan' => $request->status_pengaduan,
+            'tanggapan' => $request->tanggapan,
         ]);
 
         return redirect()->back()->with('message', 'pengaduan berhasil di update');
