@@ -23,6 +23,7 @@
                                 <td>Nama pengadu</td>
                                 @endif
                                 <td>Isi pengaduan</td>
+                                <td>tgl pengaduan</td>
                                 <td>foto pengaduan</td>
                                 <td>Kategori pengaduan</td>
                                 <td>Status pengaduan</td>
@@ -37,6 +38,7 @@
                                     <td>{{ $row->masyarakat->name }}</td>
                                     @endif
                                     <td>{{ $row->isi_pengaduan }}</td>
+                                    <td>{{ $row->created_at }}</td>
                                     <td>{{ $row->kategori->nama_kategori }}</td>
                                     <td><img src="{{ asset('data/foto_pengaduan/'.$row->foto) }}" alt="" class="img-thumbnail" width="100"></td>
                                     <td>
@@ -61,7 +63,9 @@
                                                 @if (auth()->user()->role == 'sekdes')
                                                     <a data-edit='@json($row)' data-toggle="modal" data-target="#modalUpdateStatus" class="dropdown-item edit-status" href="#"><i class="fas fa-pen"> Update status</i></a>
                                                 @endif
+                                                @if ($row->status_pengaduan == 'antri')
                                                 <a data-edit='@json($row)' data-toggle="modal" data-target="#modalPengaduan" class="dropdown-item edit" href="#"><i class="fas fa-pen"> Edit</i></a>
+                                                @endif
                                                 <a data-id_pengaduan="{{ $row->id_pengaduan }}" class="dropdown-item hapus" href="#"><i class="fas fa-trash"> Hapus</i></a>
                                             </div>
                                         </div>

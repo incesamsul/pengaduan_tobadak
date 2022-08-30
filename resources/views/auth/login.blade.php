@@ -41,6 +41,7 @@
             </div>
           </div>
           <input type="submit" class="btn" value="Login" />
+          kembali ke <a href="{{ URL::to('/') }}">halaman utama</a>
           <table style="width: 100%">
             <tr>
               <td>

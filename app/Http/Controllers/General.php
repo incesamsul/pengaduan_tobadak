@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Pengaduan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Filesystem\Filesystem;
@@ -20,7 +20,18 @@ class General extends Controller
 
     public function dashboard()
     {
-        return view('pages.dashboard.index');
+        if (auth()->user()->role == 'masyarakat') {
+            $data['antri'] = Pengaduan::where('id_masyarakat', auth()->user()->id)->where('status_pengaduan', 'antri')->get();
+            $data['proses'] = Pengaduan::where('id_masyarakat', auth()->user()->id)->where('status_pengaduan', 'proses')->get();
+            $data['diterima'] = Pengaduan::where('id_masyarakat', auth()->user()->id)->where('status_pengaduan', 'diterima')->get();
+            $data['ditolak'] = Pengaduan::where('id_masyarakat', auth()->user()->id)->where('status_pengaduan', 'ditolak')->get();
+        } else {
+            $data['antri'] = Pengaduan::where('status_pengaduan', 'antri')->get();
+            $data['proses'] = Pengaduan::where('status_pengaduan', 'proses')->get();
+            $data['diterima'] = Pengaduan::where('status_pengaduan', 'diterima')->get();
+            $data['ditolak'] = Pengaduan::where('status_pengaduan', 'ditolak')->get();
+        }
+        return view('pages.dashboard.index', $data);
     }
 
     public function profile()

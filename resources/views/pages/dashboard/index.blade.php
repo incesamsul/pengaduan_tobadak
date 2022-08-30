@@ -3,52 +3,66 @@
 @section('content')
 <section class="section">
     <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="col-md-3 col-sm-12">
             <div class="card card-statistic-2">
                 <div class="card-icon shadow-dark bg-main text-white">
-                    <i class="fas fa-users"></i>
+                    <i class="fas fa-spinner"></i>
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Total </h4>
+                        <h4>Pengaduan antri </h4>
                     </div>
                     <div class="card-body">
-                        59
+                        {{ count($antri) }}
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="col-md-3 col-sm-12">
             <div class="card card-statistic-2">
-                <div class="card-icon shadow-dark bg-main text-white">
-                    <i class="fas fa-calendar-day"></i>
+                <div class="card-icon shadow-dark bg-warning text-white">
+                    <i class="fas fa-tasks"></i>
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Hari dan tanggal sekarang</h4>
+                        <h4>Pengaduan diproses </h4>
                     </div>
                     <div class="card-body">
-                        <p class="text-small mt-3">{{ date('l, d M Y H:i:s') }}</p>
+                        {{ count($proses) }}
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="col-md-3 col-sm-12">
             <div class="card card-statistic-2">
-                <div class="card-icon shadow-dark bg-main text-white">
-                    <i class="fas fa-clock"></i>
+                <div class="card-icon shadow-dark bg-success text-white">
+                    <i class="fas fa-check"></i>
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Waktu sekarang</h4>
+                        <h4>Pengaduan diterima </h4>
                     </div>
                     <div class="card-body">
-                        <p class="text-small mt-3">{{ date('H:i:s') }}</p>
+                        {{ count($diterima) }}
                     </div>
                 </div>
             </div>
         </div>
-
+        <div class="col-md-3 col-sm-12">
+            <div class="card card-statistic-2">
+                <div class="card-icon shadow-dark bg-danger text-white">
+                    <i class="fas fa-times"></i>
+                </div>
+                <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>Pengaduan ditolak </h4>
+                    </div>
+                    <div class="card-body">
+                        {{ count($ditolak) }}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 

@@ -20,9 +20,9 @@
 
 
 
-            @if (auth()->user()->role == 'Administrator' || auth()->user()->role == 'kepala_desa')
+            @if (auth()->user()->role == 'Administrator' || auth()->user()->role == 'kepala_desa'|| auth()->user()->role == 'sekdes')
             {{-- MENU ADMIN --}}
-            <li class="menu-header">Admin</li>
+            <li class="menu-header">MASTER</li>
             <li class="nav-item dropdown " id="liPengguna">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-users"></i>
                     <span>Pengguna</span></a>

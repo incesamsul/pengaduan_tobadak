@@ -75,7 +75,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:sekdes']], function () {
 
 
 // ADMIN ROUTE
-Route::group(['middleware' => ['auth', 'ceklevel:Administrator,kepala_desa']], function () {
+Route::group(['middleware' => ['auth', 'ceklevel:Administrator,kepala_desa,sekdes']], function () {
     Route::group(['prefix' => 'admin'], function () {
         // GET REQUEST
         Route::get('/pengguna', [Admin::class, 'pengguna']);
