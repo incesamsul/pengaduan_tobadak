@@ -63,13 +63,25 @@ Route::group(['middleware' => ['auth', 'ceklevel:masyarakat']], function () {
 });
 
 // SEKDES ROUTE
-Route::group(['middleware' => ['auth', 'ceklevel:sekdes,kepala_desa']], function () {
+Route::group(['middleware' => ['auth', 'ceklevel:sekdes,kepala_desa ']], function () {
     Route::group(['prefix' => 'sekdes'], function () {
         // GET REQUEST
         Route::get('/pengaduan', [Sekdes::class, 'pengaduan']);
+        Route::get('/pengumuman', [Sekdes::class, 'pengumuman']);
+        Route::get('/informasi', [Sekdes::class, 'informasi']);
 
         // POST REQUEST
         Route::post('/update_status_pengaduan', [Sekdes::class, 'updateStatusPengaduan']);
+
+        // CRUD PENGUMUMAN
+        Route::post('/create_pengumuman', [Sekdes::class, 'createPengumuman']);
+        Route::post('/update_pengumuman', [Sekdes::class, 'updatePengumuman']);
+        Route::post('/delete_pengumuman', [Sekdes::class, 'deletePengumuman']);
+
+        // CRUD INFORMASI
+        Route::post('/create_informasi', [Sekdes::class, 'createInformasi']);
+        Route::post('/update_informasi', [Sekdes::class, 'updateInformasi']);
+        Route::post('/delete_informasi', [Sekdes::class, 'deleteInformasi']);
     });
 });
 

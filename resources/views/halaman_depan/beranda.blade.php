@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
 
 <head>
 
@@ -49,6 +49,9 @@ https://templatemo.com/tm-546-sixteen-clothing
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="{{ URL::to('/login') }}">Login</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#registrasi">Registrasi</a>
 						</li>
 					</ul>
 				</div>
@@ -127,7 +130,9 @@ https://templatemo.com/tm-546-sixteen-clothing
 				</div>
 
                 <div class="col-md-8">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus optio laborum obcaecati ea blanditiis voluptatum ipsa facilis asperiores quo atque, repudiandae eligendi quam reiciendis, repellat, itaque eveniet? Cupiditate, aperiam? Suscipit?
+                    @foreach ($informasi as $row)
+                    <p>{{ $row->isi_informasi }}</p>
+                    @endforeach
                 </div>
 
 			</div>
@@ -135,6 +140,44 @@ https://templatemo.com/tm-546-sixteen-clothing
 	</div>
 
 	<div class="call-to-action mt-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="section-heading">
+						<h2>Pengumuman</h2>
+					</div>
+				</div>
+
+                <div class="col-md-8">
+                    @foreach ($pengumuman as $row)
+                    <p>{{ $row->isi_pengumuman }}</p>
+                    @endforeach
+                </div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="call-to-action mt-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="section-heading">
+						<h2>Pengaduan</h2>
+					</div>
+				</div>
+
+                <div class="col-md-8">
+                    @foreach ($pengaduan as $row)
+                    <p>{{ $row->isi_pengaduan }}</p>
+                    @endforeach
+                </div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="call-to-action mt-5" id="registrasi">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
