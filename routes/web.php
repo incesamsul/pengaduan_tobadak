@@ -63,7 +63,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:masyarakat']], function () {
 });
 
 // SEKDES ROUTE
-Route::group(['middleware' => ['auth', 'ceklevel:sekdes,kepala_desa ']], function () {
+Route::group(['middleware' => ['auth', 'ceklevel:sekdes,kepala_desa']], function () {
     Route::group(['prefix' => 'sekdes'], function () {
         // GET REQUEST
         Route::get('/pengaduan', [Sekdes::class, 'pengaduan']);
@@ -84,6 +84,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:sekdes,kepala_desa ']], functio
         Route::post('/delete_informasi', [Sekdes::class, 'deleteInformasi']);
     });
 });
+
 
 
 // ADMIN ROUTE
