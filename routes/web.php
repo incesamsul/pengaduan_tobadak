@@ -67,6 +67,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:sekdes,kepala_desa']], function
     Route::group(['prefix' => 'sekdes'], function () {
         // GET REQUEST
         Route::get('/pengaduan', [Sekdes::class, 'pengaduan']);
+        Route::get('/laporan', [Sekdes::class, 'laporan']);
+        Route::get('/cetak_laporan', [Sekdes::class, 'cetakLaporan']);
         Route::get('/pengumuman', [Sekdes::class, 'pengumuman']);
         Route::get('/informasi', [Sekdes::class, 'informasi']);
 

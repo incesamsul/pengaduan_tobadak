@@ -22,6 +22,9 @@
                             <tr>
                                 <th width="5%" class="sorting" data-sorting_type="asc" data-column_name="id" style="cursor: pointer">ID <span id="id_icon"></span></th>
                                 <td>Nama</td>
+                                <td>nik</td>
+                                <td>dusun</td>
+                                <td>telp</td>
                                 <td>Email</td>
                                 <td>Tipe Pengguna</td>
                                 <td></td>

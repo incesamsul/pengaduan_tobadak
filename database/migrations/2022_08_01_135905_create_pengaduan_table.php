@@ -20,6 +20,7 @@ class CreatePengaduanTable extends Migration
             $table->date('tgl_pengaduan');
             $table->string('isi_pengaduan');
             $table->string('foto');
+            $table->string('video');
             $table->enum('status_pengaduan', ['antri', 'proses', 'diterima', 'ditolak']);
             $table->enum('selesai', ['0', '1']);
             $table->string('tanggapan');

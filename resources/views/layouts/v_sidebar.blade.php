@@ -55,6 +55,8 @@
             <li class="menu-header">Sekdes</li>
             <li class="" id="liPengaduan"><a class="nav-link" href="{{ URL::to('/sekdes/pengaduan') }}"><i
                 class="fas fa-arrow-right"></i> <span>Pengaduan</span></a></li>
+            <li class="" id="liLaporan"><a class="nav-link" href="{{ URL::to('/sekdes/laporan') }}"><i
+                class="fas fa-list"></i> <span>Laporan</span></a></li>
             <li class="" id="liPengumuman"><a class="nav-link" href="{{ URL::to('/sekdes/pengumuman') }}"><i
                 class="fas fa-info-circle"></i> <span>Pengumuman</span></a></li>
             <li class="" id="liInformasi"><a class="nav-link" href="{{ URL::to('/sekdes/informasi') }}"><i

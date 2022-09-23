@@ -21,12 +21,14 @@
                                 <th width="5%" class="sorting" data-sorting_type="asc" data-column_name="id" style="cursor: pointer">ID <span id="id_icon"></span></th>
                                 @if (auth()->user()->role == 'sekdes')
                                 <td>Nama pengadu</td>
+                                <td>nik</td>
                                 @endif
-                                <td>Isi pengaduan</td>
-                                <td>tgl pengaduan</td>
-                                <td>foto pengaduan</td>
-                                <td>Kategori pengaduan</td>
-                                <td>Status pengaduan</td>
+                                <td>Isi </td>
+                                <td>Tanggal</td>
+                                <td>Kategori </td>
+                                <td>video</td>
+                                <td>foto </td>
+                                <td>Status</td>
                                 <td>selesai</td>
                                 <td>Tanggapan kepala desa</td>
                                 <td></td>
@@ -38,10 +40,14 @@
                                     <td>{{ $loop->iteration }}</td>
                                     @if (auth()->user()->role == 'sekdes')
                                     <td>{{ $row->masyarakat->name }}</td>
+                                    <td>{{ $row->masyarakat->nik ? $row->masyarakat->nik : 'none' }}</td>
                                     @endif
                                     <td>{{ $row->isi_pengaduan }}</td>
                                     <td>{{ $row->created_at }}</td>
                                     <td>{{ $row->kategori->nama_kategori }}</td>
+                                    <td>
+                                        <a target="_blank" class="btn btn-primary" href="{{ asset('data/video_pengaduan/'. $row->video) }}">lihat</a>
+                                    </td>
                                     <td><img src="{{ asset('data/foto_pengaduan/'.$row->foto) }}" alt="" class="img-thumbnail" width="100"></td>
                                     <td>
                                         @if ($row->status_pengaduan == 'antri')
@@ -125,6 +131,10 @@
             <div class="form-group">
                 <label for="foto_pengaduan">Foto pengaduan</label>
                 <input type="file" name="foto_pengaduan" id="foto_pengaduan" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="video_pengaduan">Video pengaduan</label>
+                <input type="file" name="video_pengaduan" id="video_pengaduan" class="form-control" required>
             </div>
         </div>
         <div class="modal-footer">

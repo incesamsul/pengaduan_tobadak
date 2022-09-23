@@ -18,13 +18,16 @@ class Masyarakat extends Controller
     public function createPengaduan(Request $request)
     {
         $fileName = uniqid() . "." . $request->foto_pengaduan->extension();
+        $videoName = uniqid() . "." . $request->video_pengaduan->extension();
         $request->foto_pengaduan->move(public_path('data/foto_pengaduan/'), $fileName);
+        $request->video_pengaduan->move(public_path('data/video_pengaduan/'), $videoName);
 
         Pengaduan::create([
             'id_masyarakat' => auth()->user()->id,
             'id_kategori' => $request->kategori_pengaduan,
             'isi_pengaduan' => $request->isi_pengaduan,
-            'foto' => $fileName
+            'foto' => $fileName,
+            'video' => $videoName
         ]);
 
         return redirect()->back()->with('message', 'pengaduan berhasil di lakukan');
@@ -33,6 +36,14 @@ class Masyarakat extends Controller
     public function updatePengaduan(Request $request)
     {
 
+        if ($request->video_pengaduan) {
+            $fileName = uniqid() . "." . $request->video_pengaduan->extension();
+            $request->video_pengaduan->move(public_path('data/video_pengaduan/'), $fileName);
+            Pengaduan::where('id_pengaduan', $request->id)->update([
+                'isi_pengaduan' => $request->isi_pengaduan,
+                'video' => $fileName
+            ]);
+        }
         if ($request->foto_pengaduan) {
             $fileName = uniqid() . "." . $request->foto_pengaduan->extension();
             $request->foto_pengaduan->move(public_path('data/foto_pengaduan/'), $fileName);
@@ -40,11 +51,10 @@ class Masyarakat extends Controller
                 'isi_pengaduan' => $request->isi_pengaduan,
                 'foto' => $fileName
             ]);
-        } else {
-            Pengaduan::where('id_pengaduan', $request->id)->update([
-                'isi_pengaduan' => $request->isi_pengaduan,
-            ]);
         }
+        Pengaduan::where('id_pengaduan', $request->id)->update([
+            'isi_pengaduan' => $request->isi_pengaduan,
+        ]);
 
         return redirect()->back()->with('message', 'pengaduan berhasil di update');
     }

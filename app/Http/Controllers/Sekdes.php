@@ -6,6 +6,7 @@ use App\Models\Informasi;
 use App\Models\Kategori;
 use App\Models\Pengaduan;
 use App\Models\Pengumuman;
+use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 
 class Sekdes extends Controller
@@ -15,6 +16,35 @@ class Sekdes extends Controller
         $data['pengaduan'] = Pengaduan::all();
         $data['kategori'] = Kategori::all();
         return view('pages.pengaduan.index', $data);
+    }
+
+    public function laporan()
+    {
+        $data['laporan'] = Pengaduan::all();
+        $data['kategori'] = Kategori::all();
+        return view('pages.laporan.index', $data);
+    }
+
+    public function cetakLaporan()
+    {
+
+        $data['laporan'] = Pengaduan::all();
+        $html = view('pages.cetak.laporan', $data);
+
+        // instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('Legal', 'potrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream("dompdf_out.pdf", array("Attachment" => false));
+        exit(0);
     }
 
     public function pengumuman()
