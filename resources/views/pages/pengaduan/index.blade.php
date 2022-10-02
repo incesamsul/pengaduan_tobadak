@@ -38,7 +38,7 @@
                             @foreach ($pengaduan as $row)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    @if (auth()->user()->role == 'sekdes')
+                                    @if (auth()->user()->role == 'sekdes' || auth()->user()->role == 'kepala_desa')
                                     <td>{{ $row->masyarakat->name }}</td>
                                     <td>{{ $row->masyarakat->nik ? $row->masyarakat->nik : 'none' }}</td>
                                     @endif
@@ -48,7 +48,11 @@
                                     <td>
                                         <a target="_blank" class="btn btn-primary" href="{{ asset('data/video_pengaduan/'. $row->video) }}">lihat</a>
                                     </td>
-                                    <td><img src="{{ asset('data/foto_pengaduan/'.$row->foto) }}" alt="" class="img-thumbnail" width="100"></td>
+                                    <td>
+                                        <a target="_blank" href="{{ asset('data/foto_pengaduan/' . $row->foto) }}">
+                                            <img src="{{ asset('data/foto_pengaduan/'.$row->foto) }}" alt="" class="img-thumbnail" width="100">
+                                        </a>
+                                    </td>
                                     <td>
                                         @if ($row->status_pengaduan == 'antri')
                                             <span class="badge badge-warning">dalam antrian</span>
