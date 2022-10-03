@@ -15,9 +15,14 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
+    public function registrasi()
+    {
+        return view('auth.register');
+    }
+
     public function postLogin(Request $request)
     {
-        $user = User::where('email', $request->email)
+        $user = User::where('nik', $request->nik)
             ->first();
 
 
@@ -46,7 +51,7 @@ class LoginController extends Controller
             'nik' => $request->nik,
             'dusun' => $request->dusun,
             'telp' => $request->telp,
-            'password' => bcrypt($request->email),
+            'password' => bcrypt($request->nik),
             'role' => 'masyarakat',
         ]);
 

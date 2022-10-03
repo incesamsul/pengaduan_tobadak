@@ -36,6 +36,7 @@ Route::get('/tentang_aplikasi', [Home::class, 'tentangAplikasi']);
 
 Route::group(['middleware' => ['guest']], function () {
     Route::get('/login', [LoginController::class, 'login'])->name('login');
+    Route::get('/registrasi', [LoginController::class, 'registrasi']);
 });
 
 // GENERAL CONTROLLER ROUTE

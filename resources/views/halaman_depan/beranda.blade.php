@@ -51,7 +51,7 @@ https://templatemo.com/tm-546-sixteen-clothing
 							<a class="nav-link" href="{{ URL::to('/login') }}">Login</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#registrasi">Registrasi</a>
+							<a class="nav-link" href="{{ URL::to('/registrasi') }}">Registrasi</a>
 						</li>
 					</ul>
 				</div>
@@ -176,59 +176,6 @@ https://templatemo.com/tm-546-sixteen-clothing
 			</div>
 		</div>
 	</div>
-
-	<div class="call-to-action mt-5" id="registrasi">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="section-heading">
-						<h2>Registrasi</h2>
-					</div>
-				</div>
-
-					<div class="col-md-12">
-						<div class="inner-content">
-							<div class="row">
-								<div class="col-md-12">
-                                    <form action="{{ URL::to('/register') }}" method="POST">
-                                        @csrf
-                                        @if (session('message'))
-                                        <div class="alert alert-success">{{ session('message') }}</div>
-                                        @endif
-                                        <div class="form-group">
-                                            <label for="nama">nama</label>
-                                            <input required type="text" class="form-control" name="nama" id="nama">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="email">email</label>
-                                            <input required type="text" class="form-control" name="email" id="email">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="nik">nik</label>
-                                            <input required type="text" class="form-control" name="nik" id="nik">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="dusun">dusun</label>
-                                            <input required type="text" class="form-control" name="dusun" id="dusun">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="telp">telp</label>
-                                            <input required type="text" class="form-control" name="telp" id="telp">
-                                        </div>
-                                        <div class="form-group">
-                                            <button class="btn bg-main text-white" type="submit">Register</button>
-                                        </div>
-                                    </form>
-								</div>
-							</div>
-						</div>
-					</div>
-
-			</div>
-		</div>
-	</div>
-
-
 	<footer>
 		<div class="container">
 			<div class="row">
@@ -267,33 +214,7 @@ https://templatemo.com/tm-546-sixteen-clothing
 	</script>
 
 
-	<!-- MODAL BANTUAN -->
-	<!-- Modal -->
-	<div class="modal fade" id="modalBantuan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Bantuan</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<h4>Tata cara mendaftar bantuan </h4>
-					<ol>
-						<li>Datang ke kantor lurah Bonto perak</li>
-						<li>Dengan Berkas Sebagai Berkikut</li>
-						<ul>
-							<li>Kartu Keluarga</li>
-							<li>KTP (Kartu Tanda Penduduk)</li>
-						</ul>
-						<li>Menunggu informasi dari kantor lurah</li>
-						<li>Data bisa di cek di situs ketika sudah terdaftar</li>
-					</ol>
-				</div>
-			</div>
-		</div>
-	</div>
+
 </body>
 
 </html>

@@ -1,95 +1,161 @@
-@extends('layouts.app')
-@section('page', 'Register Authentication')
-@section('content')
-<body class="background show-spinner no-footer">
-    <div class="fixed-background"></div>
-    <main>
-        <div class="container">
-            <div class="row h-100">
-                <div class="col-12 col-md-10 mx-auto my-auto">
-                    <div class="card auth-card">
-                        <div class="position-relative image-side ">                            
-                            <p class="text-white h2">Register a new membership</p>                            
-                        </div>
-                        <div class="form-side">                                                      
-                            <h5 class="mb-4"><strong>Register</strong></h5>
-                              <form action="{{ route('register') }}" method="post">
-                                @csrf
-                                <div class="input-group mb-3">
-                                  <input id="email" type="email" placeholder="{{ __('E-Mail Address') }}" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="off">
-                                  <div class="input-group-append">
-                                    <div class="input-group-text">
-                                      <span class="fas fa-envelope"></span>
-                                    </div>
-                                  </div>
-                                  @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                      <strong>{{ $message }}</strong>
-                                    </span>
-                                  @enderror
-                                </div>
-                                <div class="input-group mb-3">
-                                  <select id="role" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" autocomplete="role">
-                                    <option value="">-- Select {{ __('Level User') }} --</option>
-                                    <option value="Guru">Guru</option>
-                                    <option value="Siswa">Siswa</option>
-                                  </select>
-                                  <div class="input-group-append">
-                                    <div class="input-group-text">
-                                      <span class="fas fa-user-tag"></span>
-                                    </div>
-                                  </div>
-                                  @error('role')
-                                    <span class="invalid-feedback" role="alert">
-                                      <strong>{{ $message }}</strong>
-                                    </span>
-                                  @enderror
-                                  <div id="pesan"></div>
-                                </div>
-                                <div class="input-group" id="noId">
-                                </div>
-                                <div class="input-group mb-3">
-                                  <input id="password" type="password" placeholder="{{ __('Password') }}" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
-                                  <div class="input-group-append">
-                                    <div class="input-group-text">
-                                      <span class="fas fa-lock"></span>
-                                    </div>
-                                  </div>
-                                  @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                      <strong>{{ $message }}</strong>
-                                    </span>
-                                  @enderror
-                                </div>
-                                <div class="input-group mb-3">
-                                  <input id="password-confirm" type="password" placeholder="{{ __('Confirm Password') }}" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" autocomplete="new-password">
-                                  <div class="input-group-append">
-                                    <div class="input-group-text">
-                                      <span class="fas fa-lock"></span>
-                                    </div>
-                                  </div>
-                                  @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                      <strong>{{ $message }}</strong>
-                                    </span>
-                                  @enderror
-                                </div>
-                                <div class="row mb-3">
-                                  <div class="col-6">
-                                    <a href="{{ route('login') }}" class="text-center btn btn-light text-blue">Login Saja</a>
-                                  </div>
-                                  <!-- /.col -->
-                                  <div class="col-6 justify-content-end">
-                                    <button type="submit" class="btn btn-primary btn-block">{{ __('Register') }} &nbsp; <i class="nav-icon fas fa-sign-in-alt"></i></button>
-                                  </div>
-                                  <!-- /.col -->
-                                </div>
-                              </form>
-                            </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+	<title>pengaduan tobadak</title>
+
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+	<!--
+
+TemplateMo 546 Sixteen Clothing
+
+https://templatemo.com/tm-546-sixteen-clothing
+
+-->
+
+	<!-- Additional CSS Files -->
+	<link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/home.css') }}">
+	<link rel="stylesheet" href="assets/template/assets/css/owl.css">
+
+</head>
+
+<body>
+
+	<!-- Header -->
+	<header class="">
+		<nav class="navbar navbar-expand-lg">
+			<div class="container">
+				<a class="navbar-brand" href="{{ URL::to('/') }}">
+					<h2>Pengaduan <em>Masyarakat</em></h2>
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="">Home
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{ URL::to('/login') }}">Login</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#registrasi">Registrasi</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<!-- Page Content -->
+	<!-- Banner Starts Here -->
+	<div class="banner header-text">
+
+	</div>
+
+
+	<div class="call-to-action mt-5" id="registrasi">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="section-heading">
+						<h2>Registrasi</h2>
+					</div>
+				</div>
+
+					<div class="col-md-12">
+						<div class="inner-content">
+							<div class="row">
+								<div class="col-md-12">
+                                    <form action="{{ URL::to('/register') }}" method="POST">
+                                        @csrf
+                                        @if (session('message'))
+                                        <div class="alert alert-success">{{ session('message') }}</div>
+                                        @endif
+                                        <div class="form-group">
+                                            <label for="nama">nama</label>
+                                            <input required type="text" class="form-control" name="nama" id="nama">
+                                        </div>
+                                        <div class="form-group">
+                                            <input required type="hidden" class="form-control" name="email" id="email" value="{{ uniqid() }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nik">nik</label>
+                                            <input required type="text" class="form-control" name="nik" id="nik">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="dusun">dusun</label>
+                                            <input required type="text" class="form-control" name="dusun" id="dusun">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="telp">telp</label>
+                                            <input required type="text" class="form-control" name="telp" id="telp">
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn bg-main text-white" type="submit">Register</button>
+                                        </div>
+                                    </form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+			</div>
+		</div>
+	</div>
+
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="inner-content">
+						<p>Copyright &copy; 2020 </p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="assets/template/vendor/jquery/jquery.min.js"></script>
+	<script src="assets/template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+	<!-- Additional Scripts -->
+	<script src="assets/template/assets/js/custom.js"></script>
+	<script src="assets/template/assets/js/owl.js"></script>
+	<script src="assets/template/assets/js/slick.js"></script>
+	<script src="assets/template/assets/js/isotope.js"></script>
+	<script src="assets/template/assets/js/accordions.js"></script>
+
+
+	<script language="text/Javascript">
+		cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+		function clearField(t) { //declaring the array outside of the
+			if (!cleared[t.id]) { // function makes it static and global
+				cleared[t.id] = 1; // you could use true and false, but that's more typing
+				t.value = ''; // with more chance of typos
+				t.style.color = '#fff';
+			}
+		}
+	</script>
+
+
+
 </body>
-@endsection
+
+</html>

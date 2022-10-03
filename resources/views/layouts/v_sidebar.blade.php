@@ -12,7 +12,7 @@
             {{-- SEMUA PENGGUNA / USER MEMPUNYAI MENU INI --}}
             <li class="menu-header">Pengguna</li>
             <li class="" id="liDashboard"><a class="nav-link" href="{{ URL::to('/dashboard') }}"><i
-                        class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+                        class="fas fa-tachometer-alt"></i> <span>Beranda</span></a></li>
             <li class="" id="liProfile"><a class="nav-link" href="{{ URL::to('/profile') }}"><i class="fas fa-user"></i>
                     <span>Profile</span></a></li>
             <li class="" id="liBantuan"><a class="nav-link" href="{{ URL::to('/bantuan') }}"><i

@@ -28,7 +28,7 @@
             </div>
             <div>
               {{-- <h5>Username</h5> --}}
-              <input class="input" type="text" name="email" placeholder="Username"/>
+              <input class="input" type="text" name="nik" placeholder="Nik"/>
             </div>
           </div>
           <div class="input-div" two>

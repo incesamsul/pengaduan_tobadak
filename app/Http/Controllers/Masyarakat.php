@@ -22,7 +22,7 @@ class Masyarakat extends Controller
         $request->foto_pengaduan->move(public_path('data/foto_pengaduan/'), $fileName);
         $request->video_pengaduan->move(public_path('data/video_pengaduan/'), $videoName);
 
-        $pengaduan = Pengaduan::where('id_masyarakat', auth()->user()->id)->where('id_kategori', $request->kategori_pengaduan)->first();
+        $pengaduan = Pengaduan::where('id_kategori', $request->kategori_pengaduan)->first();
 
         if ($pengaduan) {
             return redirect()->back()->with('message', 'sudah ada pengaduan dgn kategori yg sama sebelumnya');
