@@ -6,7 +6,7 @@
     <td>{{ $p->nik ? $p->nik: 'none' }}</td>
     <td>{{ $p->dusun ? $p->dusun : 'none' }}</td>
     <td>{{ $p->telp ? $p->telp : 'none' }}</td>
-    <td>{{ $p->email }}</td>
+    {{-- <td>{{ $p->email }}</td> --}}
     <td>{{ $p->role }}</td>
     <td class="option">
         <div class="btn-group dropleft btn-option">

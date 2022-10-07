@@ -25,7 +25,7 @@
                                 <td>nik</td>
                                 <td>dusun</td>
                                 <td>telp</td>
-                                <td>Email</td>
+                                {{-- <td>Email</td> --}}
                                 <td>Tipe Pengguna</td>
                                 <td></td>
                             </tr>
