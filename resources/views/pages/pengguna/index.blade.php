@@ -85,8 +85,8 @@
                         <input type="text" class="form-control" name="nama" id="nama">
                     </div>
                     <div class="form-group">
-                        <label for="email">email</label>
-                        <input type="text" class="form-control" name="email" id="email">
+                        <label for="nik">nik</label>
+                        <input type="text" class="form-control" name="nik" id="nik">
                     </div>
                     <div class="form-group">
                         <label>Role</label>
@@ -199,7 +199,7 @@
         $('.table-user tbody').on('click', 'tr td a.edit', function() {
             let dataPengguna = $(this).data('pengguna');
             $('#nama').val(dataPengguna.name);
-            $('#email').val(dataPengguna.email);
+            $('#nik').val(dataPengguna.nik);
             $('#tipe-pengguna').val(dataPengguna.role);
             $('#id').val(dataPengguna.id);
             $('#ModalLabel').html('Ubah Pengguna');
